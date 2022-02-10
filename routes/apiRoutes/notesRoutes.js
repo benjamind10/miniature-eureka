@@ -6,17 +6,18 @@ const fs = require('fs');
 
 router.get('/notes', (req, res) => {
   let results = db;
-  res.json(results);
+  return res.json(results);
 });
 
 router.post('/notes', (req, res) => {
-  res.json(createNote(req.body, db));
+  let newNote = createNote(req.body, db);
+  return res.json(newNote);
 });
 
 router.delete('/notes/:id', (req, res) => {
   const deletedNote = deleteNote(req.params.id);
 
-  res.json(deletedNote);
+  return res.json(deletedNote);
 });
 
 module.exports = router;
