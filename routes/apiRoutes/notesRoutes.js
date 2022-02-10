@@ -1,9 +1,10 @@
 const router = require('express').Router();
+const fs = require('fs');
 
 router.get('/notes', (req, res) => {
-  console.log('Getting notes');
+  let currentNotes = JSON.parse(fs.readFileSync('./db/db.json'));
 
-  console.log(req);
+  return res.json(currentNotes);
 });
 
 router.post('/notes', (req, res) => {
