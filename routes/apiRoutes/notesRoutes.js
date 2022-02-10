@@ -1,18 +1,23 @@
 const router = require('express').Router();
-const fs = require('fs');
+const db = require('../../db/db.json');
+const { v4: uuidv4 } = require('uuid');
+const { createNote } = require('../../lib/notes');
 
 router.get('/notes', (req, res) => {
-  let currentNotes = JSON.parse(fs.readFileSync('./db/db.json'));
-
-  return res.json(currentNotes);
+  let results = db;
+  res.json(results);
 });
 
 router.post('/notes', (req, res) => {
-  console.log('Posting notes');
+  req.body.id = uuidv4();
+
+  const note = createNote(req.body, db);
+
+  res.json(note);
 });
 
-router.delete('/notes/:id', (req, res) => {
-  console.log('Delete notes');
-});
+// router.delete('/notes/:id', (req, res) => {
+//   console.log('Delete notes');
+// });
 
 module.exports = router;

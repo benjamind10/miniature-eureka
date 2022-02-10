@@ -13,12 +13,12 @@ if (window.location.pathname === '/notes') {
 }
 
 // Show an element
-const show = (elem) => {
+const show = elem => {
   elem.style.display = 'inline';
 };
 
 // Hide an element
-const hide = (elem) => {
+const hide = elem => {
   elem.style.display = 'none';
 };
 
@@ -33,7 +33,7 @@ const getNotes = () =>
     },
   });
 
-const saveNote = (note) =>
+const saveNote = note =>
   fetch('/api/notes', {
     method: 'POST',
     headers: {
@@ -42,7 +42,7 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
-const deleteNote = (id) =>
+const deleteNote = id =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
@@ -78,12 +78,14 @@ const handleNoteSave = () => {
 };
 
 // Delete the clicked note
-const handleNoteDelete = (e) => {
+const handleNoteDelete = e => {
   // Prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
 
   const note = e.target;
-  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+  const noteId = JSON.parse(
+    note.parentElement.getAttribute('data-note')
+  ).id;
 
   if (activeNote.id === noteId) {
     activeNote = {};
@@ -96,14 +98,16 @@ const handleNoteDelete = (e) => {
 };
 
 // Sets the activeNote and displays it
-const handleNoteView = (e) => {
+const handleNoteView = e => {
   e.preventDefault();
-  activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
+  activeNote = JSON.parse(
+    e.target.parentElement.getAttribute('data-note')
+  );
   renderActiveNote();
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
-const handleNewNoteView = (e) => {
+const handleNewNoteView = e => {
   activeNote = {};
   renderActiveNote();
 };
@@ -117,10 +121,10 @@ const handleRenderSaveBtn = () => {
 };
 
 // Render the list of note titles
-const renderNoteList = async (notes) => {
+const renderNoteList = async notes => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
-    noteList.forEach((el) => (el.innerHTML = ''));
+    noteList.forEach(el => (el.innerHTML = ''));
   }
 
   let noteListItems = [];
@@ -158,7 +162,7 @@ const renderNoteList = async (notes) => {
     noteListItems.push(createLi('No saved Notes', false));
   }
 
-  jsonNotes.forEach((note) => {
+  jsonNotes.forEach(note => {
     const li = createLi(note.title);
     li.dataset.note = JSON.stringify(note);
 
@@ -166,7 +170,7 @@ const renderNoteList = async (notes) => {
   });
 
   if (window.location.pathname === '/notes') {
-    noteListItems.forEach((note) => noteList[0].append(note));
+    noteListItems.forEach(note => noteList[0].append(note));
   }
 };
 
