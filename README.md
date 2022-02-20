@@ -1,18 +1,44 @@
-# Note Taker Starter Code
+# Title: Note Taker
 
-```
-GIVEN a note-taking application
-WHEN I open the Note Taker
-THEN I am presented with a landing page with a link to a notes page
-WHEN I click on the link to the notes page
-THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
-WHEN I enter a new note title and the note’s text
-THEN a Save icon appears in the navigation at the top of the page
-WHEN I click on the Save icon
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
-WHEN I click on an existing note in the list in the left-hand column
-THEN that note appears in the right-hand column
-WHEN I click on the Write icon in the navigation at the top of the page
-THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
+## Table of contents:
 
-```
+- [ Description ](#about)
+- [ Installation ](#installation)
+- [ Usage ](#usage)
+- [ Languages ](#languages)
+
+- [ Questions ](#questions)
+
+<a name="about"></a>
+
+## Description:
+
+A simple note taker built with Express backend and API routes for GET/POST/DELETE.
+
+<a name="installation"></a>
+
+## Installation:
+
+    npm install
+
+<a name="usage"></a>
+
+## Usage:
+
+Run `node index.js` in the directory where the project was cloned.
+
+![demo](./assets/images/demo.gif)
+
+<a name="languages"></a>
+
+## Languages:
+
+    JavaScript, Node
+
+<a name="questions"></a>
+
+## Questions:
+
+Username: <a href=https://github.com/benjamind10>benjamind10</a>
+
+E-Mail: ben@bytebug.io
